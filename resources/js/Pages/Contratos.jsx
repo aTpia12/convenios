@@ -1,11 +1,11 @@
 import React from 'react'
-import UserAuthenticatedLayout from "@/Layouts/UserAuthenticatedLayout.jsx";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
 import {Head} from "@inertiajs/react";
 import DataTableOne from "@/Components/DataTableOne.jsx";
 
-const DashUser = ({auth, agreements, rol}) => {
+const Contratos = ({auth, agreements, rol}) => {
     return (
-        <UserAuthenticatedLayout
+        <AuthenticatedLayout
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Contrato - Convenio</h2>}
         >
@@ -22,7 +22,7 @@ const DashUser = ({auth, agreements, rol}) => {
                     </div>
                 </div>
             </div>
-        </UserAuthenticatedLayout>
+        </AuthenticatedLayout>
     )
 }
-export default DashUser
+export default Contratos

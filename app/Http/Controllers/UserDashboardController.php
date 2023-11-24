@@ -12,9 +12,10 @@ class UserDashboardController extends Controller
     public function index(): Response
     {
         $user = auth()->user();
+        $rol = $user->getRoleNames()->first();
         $agreements = $user->agreements;
 
-        return Inertia::render('DashUser', ['agreements' => $agreements]);
+        return Inertia::render('DashUser', ['agreements' => $agreements, "rol" => $rol]);
     }
 
     public function store(Request $request)

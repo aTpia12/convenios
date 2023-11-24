@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import ExtraModal from "@/Components/ExtraModal.jsx";
-const DataTableOne = ({agreements, auth, rol}) => {
+
+const DataTableFirmados = ({firmados, auth}) => {
 
     useEffect(() => {
-        new DataTable('#documents', {
+        new DataTable('#firmados', {
             language: {
                 url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json',
             },
@@ -14,19 +15,11 @@ const DataTableOne = ({agreements, auth, rol}) => {
         });
     }, [])
 
-    const handleAddAgreement = () => {
-        document.querySelector('#extralarge-modal').style.display = 'block';
-    }
-
     return (
         <div className="py-12">
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                {
-                    rol === "Consejero" ? '' :
-                        <button onClick={handleAddAgreement} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700">Agregar</button>
-                }
                 <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <table id="documents" className="stripe row-border order-column" style={{"width": "100%"}}>
+                    <table id="firmados" className="stripe row-border order-column" style={{"width": "100%"}}>
                         <thead>
                         <tr>
                             <th>#</th>
@@ -50,24 +43,24 @@ const DataTableOne = ({agreements, auth, rol}) => {
                         </thead>
                         <tbody>
                         {
-                            agreements.map(agreement => (
+                            firmados.map(firmado => (
                                 <tr>
-                                    <td>{agreement.number}</td>
-                                    <td>{agreement.name}</td>
-                                    <td>{agreement.type}</td>
-                                    <td>{agreement.subject}</td>
-                                    <td>{agreement.parts}</td>
-                                    <td>{agreement.parts_two}</td>
-                                    <td>{agreement.status}</td>
-                                    <td>{agreement.average}</td>
-                                    <td>{agreement.finance_font}</td>
-                                    <td>{agreement.federal_amount}</td>
-                                    <td>{agreement.state_amount}</td>
-                                    <td>{agreement.private_amount}</td>
-                                    <td>{agreement.auto_amount}</td>
-                                    <td>{agreement.date_sign}</td>
-                                    <td>{agreement.expired}</td>
-                                    <td>{agreement.comments}</td>
+                                    <td>{firmado.number}</td>
+                                    <td>{firmado.name}</td>
+                                    <td>{firmado.type}</td>
+                                    <td>{firmado.subject}</td>
+                                    <td>{firmado.parts}</td>
+                                    <td>{firmado.parts_two}</td>
+                                    <td>{firmado.status}</td>
+                                    <td>{firmado.average}</td>
+                                    <td>{firmado.finance_font}</td>
+                                    <td>{firmado.federal_amount}</td>
+                                    <td>{firmado.state_amount}</td>
+                                    <td>{firmado.private_amount}</td>
+                                    <td>{firmado.auto_amount}</td>
+                                    <td>{firmado.date_sign}</td>
+                                    <td>{firmado.expired}</td>
+                                    <td>{firmado.comments}</td>
                                 </tr>
                             ))
                         }
@@ -83,4 +76,4 @@ const DataTableOne = ({agreements, auth, rol}) => {
         </div>
     )
 }
-export default DataTableOne
+export default DataTableFirmados

@@ -1,6 +1,9 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import {Link, useForm} from "@inertiajs/react";
 
 const ChartCake = ({names, percents, colors}) => {
+
+    const[trim, setTrim] = useState(false)
 
     useEffect(() => {
             const getChartOptions = () => {
@@ -67,6 +70,11 @@ const ChartCake = ({names, percents, colors}) => {
             }
     }, [])
 
+    const handleTrim = () => {
+        const data = !trim;
+        setTrim(data);
+    }
+
     return (
 
         <div className="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
@@ -87,6 +95,30 @@ const ChartCake = ({names, percents, colors}) => {
 
             <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
                 <div className="flex justify-between items-center pt-5">
+                    <button
+                        onClick={handleTrim}
+
+                        id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Trimestre <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                    </button>
+
+                    <div id="dropdown" className={trim ? "z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700" : "z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"}>
+                        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                            <li>
+                                <Link href={route('consejero.index', {"trimester":1})} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Primero</Link>
+                            </li>
+                            <li>
+                                <Link href={route('consejero.index', {"trimester":2})} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Segundo</Link>
+                            </li>
+                            <li>
+                                <Link href={route('consejero.index', {"trimester":3})} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tercero</Link>
+                            </li>
+                            <li>
+                                <Link href={route('consejero.index', {"trimester":4})} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cuarto</Link>
+                            </li>
+                        </ul>
+                    </div>
 
 
                 </div>

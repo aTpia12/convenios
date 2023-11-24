@@ -3,6 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.jsx";
 import {Head} from "@inertiajs/react";
 import CardData from "@/Components/CardData.jsx";
 import ChartCake from "@/Components/ChartCake.jsx";
+import { Link } from '@inertiajs/react';
 
 const Consejero = ({auth, count, amount, names, percents, colors}) => {
     return (
@@ -16,18 +17,22 @@ const Consejero = ({auth, count, amount, names, percents, colors}) => {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="grid grid-cols-3 gap-4">
-                            <CardData
-                                mount={count}
-                                text="Firmados"
-                            />
+                            <Link href="/firmados">
+                                <CardData
+                                    mount={count}
+                                    text="Firmados"
+                                />
+                            </Link>
                             <CardData
                                 mount={0}
                                 text="Firmados por Dependencia"
                             />
-                            <CardData
-                                mount={'$'+amount}
-                                text="Monto de los Instrumentos"
-                            />
+                            <Link href='/contratos'>
+                                <CardData
+                                    mount={'$'+amount}
+                                    text="Monto de los Instrumentos"
+                                />
+                            </Link>
                             <ChartCake
                                 names={names}
                                 percents={percents}

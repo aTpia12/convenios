@@ -7,6 +7,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\ConsejeroDashboardController;
+use App\Http\Controllers\FirmadosController;
+use App\Http\Controllers\ContratoController;
 
 
 Route::get('/', function () {
@@ -26,7 +28,9 @@ Route::get('/admin', function () {
     return Inertia::render('Admin');
 })->middleware(['auth', 'verified'])->name('admin');
 
-Route::get('/consejero', ConsejeroDashboardController::class)->middleware(['auth', 'verified'])->name('consejero');
+Route::get('/consejero/{trimester?}', [ConsejeroDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('consejero.index');
+Route::get('/firmados', FirmadosController::class)->middleware(['auth', 'verified'])->name('firmados');
+Route::get('/contratos', [ContratoController::class, 'index'])->middleware(['auth', 'verified'])->name('contratos');
 
 Route::get('/user-dashboard', [UserDashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('user-dashboard.index');
 Route::post('/user-dashboard', [UserDashboardController::class, 'store'])->middleware(['auth', 'verified'])->name('user-dashboard.store');
